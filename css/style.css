@@ -191,8 +191,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .hero::before {
     content: ""; position: absolute; inset: 0; z-index: -1;
     background:
-        radial-gradient(600px 600px at 85% 20%, rgba(244, 179, 160, 0.28), transparent 65%),
-        radial-gradient(700px 700px at -5% 90%, rgba(244, 179, 160, 0.16), transparent 60%);
+        radial-gradient(620px 620px at 85% 18%, rgba(244, 179, 160, 0.38), transparent 65%),
+        radial-gradient(760px 760px at -5% 95%, rgba(244, 179, 160, 0.24), transparent 60%),
+        linear-gradient(160deg, #FDFAF8 0%, var(--bg) 55%, #F7EDE6 100%);
 }
 .hero-inner {
     width: min(1240px, 100% - 3rem); margin-inline: auto;
@@ -209,9 +210,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .eyebrow-line { width: 3.2em; height: 1px; background: var(--coral-strong); }
 
 .hero-title {
-    font-family: var(--font-serif); font-weight: 600;
-    font-size: clamp(2.5rem, 5.4vw, 4.3rem);
-    line-height: 1.42; letter-spacing: 0.06em;
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: clamp(2.6rem, 5.8vw, 4.6rem);
+    line-height: 1.36; letter-spacing: 0.05em;
     margin-bottom: 1.6rem;
 }
 .hero-lead {
@@ -282,29 +283,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     50% { transform: scaleY(1.5); }
 }
 
-.hero-scroll {
-    position: absolute; left: 50%; bottom: 1.6rem; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-}
-.hero-scroll-label {
-    font-family: var(--font-latin); font-style: italic;
-    font-size: 0.8rem; letter-spacing: 0.3em; color: var(--ink-faint);
-}
-.hero-scroll-line {
-    width: 1px; height: 44px; background: var(--ink-faint);
-    overflow: hidden; position: relative;
-}
-.hero-scroll-line::after {
-    content: ""; position: absolute; left: 0; top: -100%;
-    width: 100%; height: 100%; background: var(--coral-strong);
-    animation: scrollline 2s var(--ease) infinite;
-}
-@keyframes scrollline {
-    0% { top: -100%; } 60%, 100% { top: 100%; }
-}
-/* 高さの低い画面ではヒーロー内容と重なるため非表示 */
-@media (max-height: 800px) {
-    .hero-scroll { display: none; }
+/* コピーに引くコーラルのマーカー線 */
+.accent-underline {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20' preserveAspectRatio='none'%3E%3Cpath d='M5 14 Q 75 5 150 11 T 295 8' fill='none' stroke='%23F4B3A0' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left 96% / 100% 0.32em;
+    padding-bottom: 0.14em;
 }
 
 /* ==========================================================================
@@ -342,7 +324,22 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    ========================================================================== */
 .section { padding: clamp(5rem, 10vw, 8.5rem) 0; }
 
-.section-head { max-width: 640px; margin-bottom: clamp(2.8rem, 5vw, 4rem); }
+.section-head {
+    position: relative;
+    max-width: 640px;
+    margin-bottom: clamp(2.8rem, 5vw, 4rem);
+}
+/* 見出し背後の大きな英字の透かし */
+.section-ghost {
+    position: absolute; top: -0.52em; left: -0.04em; z-index: 0;
+    font-family: var(--font-latin); font-style: italic; font-weight: 300;
+    font-size: clamp(4.6rem, 11vw, 8.5rem);
+    line-height: 1; letter-spacing: 0.02em;
+    color: rgba(61, 55, 51, 0.05);
+    pointer-events: none; user-select: none; white-space: nowrap;
+}
+.section-head > * { position: relative; z-index: 1; }
+.section-head > .section-ghost { z-index: 0; }
 .section-label {
     font-family: var(--font-latin); font-style: italic;
     font-size: 1.05rem; letter-spacing: 0.28em; color: var(--coral-deep);
@@ -360,34 +357,53 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 /* ==========================================================================
    Voice Samples
    ========================================================================== */
-.section--voice { background: var(--bg); }
+/* 収録スタジオを思わせるダークセクション */
+.section--voice {
+    position: relative;
+    background:
+        radial-gradient(900px 500px at 80% 0%, rgba(232, 150, 126, 0.13), transparent 60%),
+        radial-gradient(700px 500px at 0% 100%, rgba(232, 150, 126, 0.08), transparent 55%),
+        #37312C;
+    color: #F3EDE7;
+}
+.section--voice .section-title { color: #F6EFE9; }
+.section--voice .section-lead { color: rgba(243, 237, 231, 0.55); }
+.section--voice .section-label { color: var(--coral-soft); }
+.section--voice .section-label::after { background: var(--coral); }
+.section--voice .section-ghost { color: rgba(255, 255, 255, 0.05); }
 
 .samples { display: grid; gap: 1.1rem; max-width: 780px; }
 
 .sample-card {
     display: flex; align-items: center; gap: 1.4rem;
-    background: var(--surface);
-    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: var(--radius-lg);
     padding: 1.4rem 1.8rem;
-    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease),
+                border-color 0.4s, background-color 0.4s;
 }
 .sample-card:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--coral-soft);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(244, 179, 160, 0.5);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
 }
-.sample-card.is-current { border-color: var(--coral-strong); box-shadow: var(--shadow-md); }
+.sample-card.is-current {
+    border-color: var(--coral);
+    background: rgba(232, 150, 126, 0.10);
+}
 
 .sample-play {
     flex: 0 0 58px; height: 58px; border-radius: 50%;
     display: grid; place-items: center;
-    background: var(--coral-tint); color: var(--coral-deep);
+    background: var(--coral-strong); color: #fff;
     font-size: 1.3rem;
+    box-shadow: 0 6px 18px rgba(217, 125, 99, 0.4);
     transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease);
 }
-.sample-play:hover { background: var(--coral-strong); color: #fff; transform: scale(1.07); }
-.sample-card.is-playing .sample-play { background: var(--coral-strong); color: #fff; }
+.sample-play:hover { background: var(--coral-deep); transform: scale(1.08); }
+.sample-card.is-playing .sample-play { background: var(--coral-deep); }
 
 /* play/pause icon swap */
 .icon-pause { display: none; }
@@ -398,14 +414,15 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .sample-tag {
     display: inline-block;
     font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
-    color: var(--coral-deep); background: var(--coral-tint);
+    color: var(--coral-soft); background: rgba(232, 150, 126, 0.16);
     border-radius: 999px; padding: 0.15em 1em; margin-bottom: 0.4rem;
 }
 .sample-title {
     font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;
     letter-spacing: 0.06em; line-height: 1.5;
+    color: #F6EFE9;
 }
-.sample-meta { font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.15rem; }
+.sample-meta { font-size: 0.82rem; color: rgba(243, 237, 231, 0.45); margin-top: 0.15rem; }
 
 .sample-side {
     display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;
@@ -415,7 +432,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     font-family: var(--font-sans); font-weight: 300;
     font-size: 0.88rem; letter-spacing: 0.08em;
     font-variant-numeric: tabular-nums;
-    color: var(--ink-soft);
+    color: rgba(243, 237, 231, 0.55);
 }
 .sample-eq { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
 .sample-eq span {
@@ -447,11 +464,19 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .profile-photo {
     position: sticky; top: calc(var(--header-h) + 2rem);
+}
+.profile-photo img {
+    aspect-ratio: 4 / 5; object-fit: cover; width: 100%;
     border-radius: var(--radius-lg);
-    overflow: hidden;
     box-shadow: var(--shadow-md);
 }
-.profile-photo img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+/* 写真の背後にずらしたコーラルの色面 */
+.profile-photo::before {
+    content: ""; position: absolute; z-index: -1;
+    inset: 1.8rem -1.8rem -1.8rem 1.8rem;
+    background: linear-gradient(150deg, var(--coral-tint), var(--coral-soft));
+    border-radius: var(--radius-lg);
+}
 
 .profile-name {
     font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600;
@@ -520,8 +545,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .works-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 1.1rem;
+    counter-reset: work;
 }
 .work-card {
+    position: relative;
     background: var(--surface);
     border-radius: var(--radius);
     padding: 1.6rem 1.5rem 1.4rem;
@@ -529,6 +556,15 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     box-shadow: var(--shadow-sm);
     transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
     display: flex; flex-direction: column; gap: 0.45rem;
+}
+/* 通し番号（フィルター時は表示中のカードだけで自動的に振り直される） */
+.work-card::before {
+    counter-increment: work;
+    content: counter(work, decimal-leading-zero);
+    position: absolute; top: 1.3rem; right: 1.3rem;
+    font-family: var(--font-latin); font-style: italic;
+    font-size: 1.05rem; line-height: 1;
+    color: var(--coral-soft);
 }
 .work-card:hover {
     transform: translateY(-4px);
@@ -559,38 +595,47 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 /* ==========================================================================
    Contact
    ========================================================================== */
-.section--contact { background: var(--bg); }
+.section--contact {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--coral-tint) 100%);
+}
 
 .contact-grid {
     display: grid; grid-template-columns: 0.9fr 1.1fr;
-    gap: clamp(2.5rem, 6vw, 5rem);
+    gap: clamp(2rem, 4vw, 3.5rem);
     align-items: start;
 }
 .contact-info {
-    background: var(--surface);
-    border: 1px solid var(--line);
+    background: var(--ink);
+    color: #EFE8E2;
     border-radius: var(--radius-lg);
-    padding: 2.4rem 2.2rem;
+    padding: 2.6rem 2.4rem;
+    box-shadow: var(--shadow-md);
 }
-.contact-info-lead { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 0.7rem; }
+.contact-info-lead { font-size: 0.9rem; color: #B8ACA3; margin-bottom: 0.7rem; }
 .contact-mail {
     display: block;
     font-family: var(--font-latin); font-size: clamp(1.1rem, 2vw, 1.35rem);
-    letter-spacing: 0.04em; color: var(--coral-deep);
+    letter-spacing: 0.04em; color: var(--coral-soft);
     margin-bottom: 1.8rem;
     word-break: break-all;
     transition: color 0.3s;
 }
-.contact-mail:hover { color: var(--coral-strong); }
+.contact-mail:hover { color: #fff; }
 .contact-sns {
     display: inline-flex; align-items: center; gap: 0.6em;
-    font-size: 0.9rem; color: var(--ink-soft);
+    font-size: 0.9rem; color: #B8ACA3;
     transition: color 0.3s;
 }
 .contact-sns .icon { font-size: 1.25em; }
-.contact-sns:hover { color: var(--coral-deep); }
+.contact-sns:hover { color: var(--coral-soft); }
 
-.contact-form { display: grid; gap: 1.4rem; }
+.contact-form {
+    display: grid; gap: 1.4rem;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 2.4rem 2.2rem;
+    box-shadow: var(--shadow-md);
+}
 .form-field label {
     display: flex; align-items: center; gap: 0.7em;
     font-size: 0.88rem; font-weight: 500; letter-spacing: 0.08em;
@@ -605,7 +650,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .form-field textarea {
     width: 100%;
     font: inherit; color: var(--ink);
-    background: var(--surface);
+    background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 10px;
     padding: 0.85em 1.1em;
@@ -799,7 +844,9 @@ textarea { resize: vertical; min-height: 140px; }
 
     /* --- Sections --- */
     .profile-grid, .contact-grid { grid-template-columns: 1fr; }
-    .profile-photo { position: static; max-width: 420px; }
+    .profile-photo { position: static; max-width: 420px; margin-right: 1rem; }
+    /* モバイルでは色面のずらし量を抑えて横はみ出しを防ぐ */
+    .profile-photo::before { inset: 1rem -1rem -1rem 1rem; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
     .pc-only { display: none; }
 }
