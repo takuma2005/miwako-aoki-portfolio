@@ -83,7 +83,12 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+    /* iteration-count:1 が重要: これがないと無限ループのアニメーションが超高速で回り続ける */
+    *, *::before, *::after {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001s !important;
+    }
     .js .reveal { opacity: 1; transform: none; }
 }
 
@@ -308,27 +313,29 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .clients {
     border-block: 1px solid var(--line);
     background: var(--surface);
-    padding: 1.4rem 0;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    padding: 2.2rem 0;
 }
-.clients-track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
-.clients:hover .clients-track { animation-play-state: paused; }
-.clients-list { display: flex; align-items: center; }
+.clients-label {
+    text-align: center;
+    font-size: 0.78rem; letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 1.2rem;
+}
+.clients-list {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    align-items: center;
+    column-gap: 0; row-gap: 0.7rem;
+}
 .clients-list li {
     font-family: var(--font-serif); font-size: 0.95rem; letter-spacing: 0.16em;
     color: var(--ink-soft); white-space: nowrap;
-    padding: 0 2.4rem; position: relative;
+    padding: 0 1.6rem; position: relative;
 }
 .clients-list li::after {
-    content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    content: ""; position: absolute; right: -2px; top: 50%; transform: translateY(-50%);
     width: 4px; height: 4px; border-radius: 50%; background: var(--coral-soft);
 }
-@keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
+.clients-list li:last-child::after { content: none; }
 
 /* ==========================================================================
    Sections (shared)
@@ -404,7 +411,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;
 }
 .sample-duration {
-    font-family: var(--font-latin); font-size: 1rem; letter-spacing: 0.1em;
+    /* 数字の高さが揃うようサンセリフを使用（Cormorantはオールドスタイル数字のため不揃いに見える） */
+    font-family: var(--font-sans); font-weight: 300;
+    font-size: 0.88rem; letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
     color: var(--ink-soft);
 }
 .sample-eq { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
@@ -673,7 +683,9 @@ textarea { resize: vertical; min-height: 140px; }
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .player-time {
-    font-family: var(--font-latin); font-size: 0.85rem; letter-spacing: 0.08em;
+    font-family: var(--font-sans); font-weight: 300;
+    font-size: 0.78rem; letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
     color: #B8ACA3; white-space: nowrap;
 }
 .player-progress {
