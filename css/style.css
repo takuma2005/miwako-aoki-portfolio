@@ -510,6 +510,49 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .tag-list li:hover { border-color: var(--coral-soft); color: var(--coral-deep); background: var(--coral-tint); }
 
+/* Services */
+.section--service { background: var(--bg); }
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+.service-card {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.7rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--coral-soft);
+    box-shadow: var(--shadow-md);
+}
+.service-number {
+    margin-bottom: auto;
+    font-family: var(--font-latin);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--coral-strong);
+}
+.service-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 2.5rem 0 0.7rem;
+}
+.service-card p:last-child {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+}
+
 /* ==========================================================================
    Works
    ========================================================================== */
@@ -609,6 +652,35 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     transition: color 0.3s;
 }
 .contact-mail:hover { color: #fff; }
+.contact-guide {
+    margin: 0 0 1.8rem;
+    padding: 1.1rem 0 0;
+    border-top: 1px solid rgba(239, 232, 226, 0.2);
+}
+.contact-guide-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--coral-soft);
+    margin-bottom: 0.55rem;
+}
+.contact-guide li {
+    position: relative;
+    padding-left: 1em;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: #CFC3BB;
+}
+.contact-guide li::before {
+    content: "";
+    position: absolute;
+    top: 0.82em;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--coral-soft);
+}
 .contact-sns {
     display: inline-flex; align-items: center; gap: 0.6em;
     font-size: 0.9rem; color: #B8ACA3;
@@ -788,6 +860,7 @@ textarea { resize: vertical; min-height: 140px; }
    ========================================================================== */
 @media (max-width: 1024px) {
     .works-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-inner { grid-template-columns: 1fr 0.9fr; }
 }
 
@@ -928,6 +1001,9 @@ textarea { resize: vertical; min-height: 140px; }
     .clients-list li:nth-child(n+7) { display: none; }
 
     .works-grid { grid-template-columns: 1fr; }
+    .service-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+    .service-card { min-height: 0; padding: 1.35rem; }
+    .service-card h3 { margin-top: 1.6rem; }
 
     .sample-card {
         align-items: flex-start;

@@ -175,8 +175,12 @@
   if (filterButtons.length && worksGrid) {
     filterButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach((b) => b.classList.remove('is-active'));
+        filterButtons.forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
         applyFilter(btn.dataset.filter);
       });
     });

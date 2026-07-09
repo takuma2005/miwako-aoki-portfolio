@@ -82,6 +82,7 @@
             <nav class="nav" aria-label="メインナビゲーション">
                 <ul class="nav-list" id="navMenu">
                     <li><a href="#voice" class="nav-link">Voice</a></li>
+                    <li><a href="#service" class="nav-link">Service</a></li>
                     <li><a href="#profile" class="nav-link">Profile</a></li>
                     <li><a href="#works" class="nav-link">Works</a></li>
                     <li><a href="#contact" class="nav-link nav-link--cta">お問い合わせ</a></li>
@@ -272,6 +273,40 @@
             </div>
         </section>
 
+        <!-- ============ Services ============ -->
+        <section id="service" class="section section--service">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="section-label">Service</p>
+                    <h2 class="section-title">声で、伝わる時間をつくります</h2>
+                    <p class="section-lead">媒体や目的に合わせて、声の温度・スピード・表現をご提案します。</p>
+                </header>
+
+                <div class="service-grid">
+                    <article class="service-card reveal">
+                        <p class="service-number">01</p>
+                        <h3>企業VP・プロモーション</h3>
+                        <p>商品・サービスの魅力を、わかりやすく信頼感のある声で届けます。</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <p class="service-number">02</p>
+                        <h3>CM・番組ナレーション</h3>
+                        <p>短い言葉にも印象を残す表現から、長尺のストーリーまで対応します。</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <p class="service-number">03</p>
+                        <h3>イベントMC・司会</h3>
+                        <p>式典・パーティー・披露宴など、会場の空気に寄り添って進行します。</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <p class="service-number">04</p>
+                        <h3>宅録・リモート収録</h3>
+                        <p>ご希望の収録方法に合わせ、全国からのご依頼にも柔軟に対応します。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- ============ Works ============ -->
         <section id="works" class="section section--works">
             <div class="container">
@@ -281,11 +316,11 @@
                 </header>
 
                 <div class="works-filter reveal" role="group" aria-label="実績の絞り込み">
-                    <button class="filter-btn is-active" data-filter="all">すべて</button>
-                    <button class="filter-btn" data-filter="cm">CM</button>
-                    <button class="filter-btn" data-filter="vp">企業VP</button>
-                    <button class="filter-btn" data-filter="tv">TV番組</button>
-                    <button class="filter-btn" data-filter="other">その他</button>
+                    <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">すべて</button>
+                    <button type="button" class="filter-btn" data-filter="cm" aria-pressed="false">CM</button>
+                    <button type="button" class="filter-btn" data-filter="vp" aria-pressed="false">企業VP</button>
+                    <button type="button" class="filter-btn" data-filter="tv" aria-pressed="false">TV番組</button>
+                    <button type="button" class="filter-btn" data-filter="other" aria-pressed="false">その他</button>
                 </div>
 
                 <div class="works-grid" id="worksGrid">
@@ -395,6 +430,14 @@
                     <div class="contact-info reveal">
                         <p class="contact-info-lead">メールでのご連絡はこちらへ</p>
                         <a href="mailto:contact@miwako-aoki.com" class="contact-mail">contact@miwako-aoki.com</a>
+                        <div class="contact-guide">
+                            <p class="contact-guide-title">ご相談時にあるとスムーズなこと</p>
+                            <ul>
+                                <li>用途・媒体（CM／企業VP／イベントなど）</li>
+                                <li>原稿量・ご希望の納期</li>
+                                <li>声のイメージや参考動画</li>
+                            </ul>
+                        </div>
                         <a href="https://www.instagram.com/miwako_happy/" class="contact-sns" target="_blank" rel="noopener noreferrer" aria-label="Instagram @miwako_happy">
                             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1M12 0C8.7 0 8.3 0 7 .1 5.7.2 4.9.4 4.1.7c-.8.3-1.4.7-2.1 1.4C1.4 2.7 1 3.4.7 4.1.4 4.9.2 5.7.1 7 0 8.3 0 8.7 0 12s0 3.7.1 5c.1 1.3.3 2.1.6 2.9.3.8.7 1.4 1.4 2.1.6.6 1.3 1 2.1 1.4.8.3 1.6.5 2.9.6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.4-.7 2.1-1.4.6-.6 1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.4-1.4-2.1C20.7 1.4 20 1 19.2.7c-.8-.3-1.6-.5-2.9-.6C15 0 14.6 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.8-10.4a1.4 1.4 0 1 1-2.9 0 1.4 1.4 0 0 1 2.9 0z"/></svg>
                             @miwako_happy
@@ -412,7 +455,7 @@
                         </div>
                         <div class="form-field">
                             <label for="message">お問い合わせ内容<span class="required">必須</span></label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="ご依頼内容・ご希望の納期などをご記入ください" required></textarea>
                         </div>
                         <button type="submit" class="btn btn--primary btn--wide">送信する</button>
                         <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
@@ -432,6 +475,7 @@
             <nav aria-label="フッターナビゲーション">
                 <ul class="footer-nav">
                     <li><a href="#voice">Voice</a></li>
+                    <li><a href="#service">Service</a></li>
                     <li><a href="#profile">Profile</a></li>
                     <li><a href="#works">Works</a></li>
                     <li><a href="#contact">Contact</a></li>
