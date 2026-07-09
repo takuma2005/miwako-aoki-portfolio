@@ -15,18 +15,20 @@
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
 
-  const closeMenu = () => {
+  const setMenuState = (isOpen) => {
     if (!menuToggle || !navMenu) return;
-    menuToggle.classList.remove('is-open');
-    navMenu.classList.remove('is-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  };
-
-  const toggleMenu = () => {
-    if (!menuToggle || !navMenu) return;
-    const isOpen = menuToggle.classList.toggle('is-open');
+    menuToggle.classList.toggle('is-open', isOpen);
     navMenu.classList.toggle('is-open', isOpen);
     menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    document.body.classList.toggle('menu-open', isOpen);
+  };
+
+  const closeMenu = () => setMenuState(false);
+
+  const toggleMenu = () => {
+    if (!menuToggle) return;
+    setMenuState(!menuToggle.classList.contains('is-open'));
   };
 
   if (menuToggle && navMenu) {
@@ -163,6 +165,11 @@
     } else if (!showMoreClicked) {
       worksGrid.classList.remove('show-all');
     }
+
+    /* カテゴリ絞り込み中は全件表示になるため「もっと見る」を隠す */
+    if (showMoreBtn && !showMoreClicked) {
+      showMoreBtn.hidden = filter !== 'all';
+    }
   };
 
   if (filterButtons.length && worksGrid) {
@@ -181,7 +188,6 @@
       showMoreClicked = true;
       worksGrid.classList.add('show-all');
       showMoreBtn.hidden = true;
-      showMoreBtn.style.display = 'none';
     });
   }
 
@@ -211,26 +217,6 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ============ アンカーのスムーススクロール ============ */
-  const HEADER_OFFSET = 80;
-
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (event) => {
-      const href = anchor.getAttribute('href');
-      if (!href || href === '#') return;
-
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      event.preventDefault();
-
-      const targetPosition =
-        target.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-      });
-    });
-  });
+  /* アンカーのスムーススクロールは CSS（scroll-behavior / scroll-padding-top）に委譲。
+     JS で preventDefault すると skip link のフォーカス移動やハッシュ更新が壊れるため。 */
 })();
