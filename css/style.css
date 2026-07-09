@@ -323,24 +323,12 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 /* ==========================================================================
    Sections (shared)
    ========================================================================== */
-.section { padding: clamp(5rem, 10vw, 8.5rem) 0; }
+.section { padding: clamp(4.5rem, 8vw, 7rem) 0; }
 
 .section-head {
-    position: relative;
     max-width: 640px;
     margin-bottom: clamp(2.8rem, 5vw, 4rem);
 }
-/* 見出し背後の大きな英字の透かし */
-.section-ghost {
-    position: absolute; top: -0.52em; left: -0.04em; z-index: 0;
-    font-family: var(--font-latin); font-style: italic; font-weight: 300;
-    font-size: clamp(4.6rem, 11vw, 8.5rem);
-    line-height: 1; letter-spacing: 0.02em;
-    color: rgba(61, 55, 51, 0.05);
-    pointer-events: none; user-select: none; white-space: nowrap;
-}
-.section-head > * { position: relative; z-index: 1; }
-.section-head > .section-ghost { z-index: 0; }
 .section-label {
     font-family: var(--font-latin); font-style: italic;
     font-size: 1.05rem; letter-spacing: 0.28em; color: var(--coral-deep);
@@ -371,7 +359,6 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .section--voice .section-lead { color: rgba(243, 237, 231, 0.72); }
 .section--voice .section-label { color: var(--coral-soft); }
 .section--voice .section-label::after { background: var(--coral); }
-.section--voice .section-ghost { color: rgba(255, 255, 255, 0.05); }
 
 .samples { display: grid; gap: 1.1rem; max-width: 780px; }
 
@@ -868,7 +855,6 @@ textarea { resize: vertical; min-height: 140px; }
     .container, .header-inner, .hero-inner { width: calc(100% - 2rem); }
     .section { padding: 4rem 0; }
     .section-head { margin-bottom: 2.2rem; }
-    .section-ghost { display: none; }
     .section-label {
         font-size: 0.95rem;
         letter-spacing: 0.16em;
