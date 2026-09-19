@@ -34,12 +34,13 @@
     --success: oklch(57.9% 0.097 149);
 
     /* Typography */
-    --font-serif: 'Shippori Mincho', 'Hiragino Mincho ProN', serif;
-    --font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
-    --font-latin: 'Cormorant Garamond', 'Shippori Mincho', serif;
+    --font-serif: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    --font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+    --font-latin: 'Cormorant Garamond', 'Shippori Mincho', 'Yu Mincho', serif;
 
     /* Rhythm */
     --header-h: 76px;
+    --page-gutter: clamp(1rem, 3vw, 1.5rem);
     --radius: 14px;
     --radius-lg: 22px;
     --shadow-xs: 0 1px 4px oklch(34.2% 0.011 56 / 0.05);

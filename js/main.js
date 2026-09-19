@@ -44,6 +44,11 @@
         menuToggle.focus();
       }
     });
+
+    // PC表示へ切り替えた後、スマホに戻してもメニューを開いたままにしない。
+    window.matchMedia('(max-width: 860px)').addEventListener('change', (event) => {
+      if (!event.matches) closeMenu();
+    });
   }
 
   /* ============ スクロールスパイ ============ */
