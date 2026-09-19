@@ -162,7 +162,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .nav-link--cta, .nav-link--cta.is-active, .nav-link--cta:hover { color: var(--surface); }
 .nav-link--cta:hover { background: var(--coral-ink); }
 
-.menu-toggle { display: none; }
+.menu-toggle, .header-contact { display: none; }
 
 /* ==========================================================================
    Hero
@@ -492,7 +492,6 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     content: ""; width: 1.4em; height: 1px; background: var(--coral-strong);
     flex-shrink: 0;
 }
-.profile-detail-text { font-size: 0.92rem; color: var(--ink-soft); }
 
 .tag-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 /* 非インタラクティブ要素なのでホバー演出は付けない */
@@ -507,7 +506,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .section--service { background: var(--bg); }
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
 }
 .service-card {
@@ -893,6 +892,15 @@ textarea { resize: vertical; min-height: 140px; }
 
 @media (max-width: 860px) {
     /* --- Mobile nav --- */
+    .header-inner .header-contact {
+        display: inline-flex;
+        flex-shrink: 0;
+        margin-left: auto;
+        margin-right: 0.5rem;
+        padding: 0.6em 1em;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+    }
     .menu-toggle {
         display: grid; place-items: center; gap: 0;
         width: 46px; height: 46px; z-index: 250;
