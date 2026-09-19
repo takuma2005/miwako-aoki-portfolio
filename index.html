@@ -41,7 +41,6 @@
         "description": "約300作品のナレーション実績と約3000件のMC経験を持つフリーランスナレーター",
         "url": "https://miwako-aoki.com/",
         "image": "https://miwako-aoki.com/assets/images/profile.jpg",
-        "email": "mailto:contact@miwako-aoki.com",
         "sameAs": ["https://www.instagram.com/miwako_happy/"],
         "address": {
             "@type": "PostalAddress",
@@ -64,7 +63,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260919-contact">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -424,8 +423,6 @@
 
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <p class="contact-info-lead">メールでのご連絡はこちらへ</p>
-                        <a href="mailto:contact@miwako-aoki.com" class="contact-mail">contact@miwako-aoki.com</a>
                         <div class="contact-guide">
                             <p class="contact-guide-title">ご相談時にあるとスムーズなこと</p>
                             <ul>
@@ -440,21 +437,25 @@
                         </a>
                     </div>
 
-                    <form id="contactForm" class="contact-form" novalidate>
+                    <!-- Formspreeで発行したURLをaction属性に設定。受信先メールは記載しない。 -->
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xoevvzbq" method="POST" aria-describedby="formStatus">
+                        <input type="hidden" name="_language" value="ja">
+                        <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <div class="form-field">
                             <label for="name">お名前（会社名）<span class="required">必須</span></label>
-                            <input type="text" id="name" name="name" autocomplete="name" required>
+                            <input type="text" id="name" name="name" autocomplete="name" maxlength="200" required>
                         </div>
                         <div class="form-field">
                             <label for="email">メールアドレス<span class="required">必須</span></label>
-                            <input type="email" id="email" name="email" autocomplete="email" placeholder="example@email.com" required>
+                            <input type="email" id="email" name="email" autocomplete="email" placeholder="example@email.com" maxlength="254" required>
                         </div>
                         <div class="form-field">
                             <label for="message">お問い合わせ内容<span class="required">必須</span></label>
-                            <textarea id="message" name="message" rows="6" placeholder="ご依頼内容・ご希望の納期などをご記入ください" required></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="ご依頼内容・ご希望の納期などをご記入ください" maxlength="10000" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--wide">送信する</button>
+                        <button type="submit" class="btn btn--primary btn--wide" disabled>送信する</button>
                         <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                        <noscript><p class="form-status">フォームの利用にはJavaScriptを有効にしてください。Instagramからもご連絡いただけます。</p></noscript>
                     </form>
                 </div>
             </div>
@@ -513,6 +514,6 @@
 
     <script src="js/main.js" defer></script>
     <script src="js/audio-player.js" defer></script>
-    <script src="js/form.js" defer></script>
+    <script src="js/form.js?v=20260919-contact" defer></script>
 </body>
 </html>

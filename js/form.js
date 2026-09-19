@@ -8,9 +8,13 @@
   const emailField = document.getElementById('email');
   const messageField = document.getElementById('message');
   const formStatus = document.getElementById('formStatus');
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  const CONTACT_EMAIL = 'contact@miwako-aoki.com';
+  // FormspreeのフォームIDだけを公開し、受信先は管理画面で設定する。
+  const endpoint = form.getAttribute('action') || '';
+  const isConfigured = /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(endpoint);
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const UNAVAILABLE_MESSAGE = '現在フォームの受付を準備中です。Instagramからご連絡ください。';
 
   /* ============ エラー表示ヘルパー ============ */
   const getFormField = (input) => input?.closest('.form-field') || null;
@@ -18,24 +22,27 @@
   const setFieldError = (input) => {
     const field = getFormField(input);
     if (field) field.classList.add('has-error');
+    input?.setAttribute('aria-invalid', 'true');
+    input?.setAttribute('aria-describedby', 'formStatus');
   };
 
   const clearFieldError = (input) => {
     const field = getFormField(input);
     if (field) field.classList.remove('has-error');
+    input?.removeAttribute('aria-invalid');
+    input?.removeAttribute('aria-describedby');
   };
 
-  const showStatus = (message, type) => {
+  const showStatus = (message) => {
     if (!formStatus) return;
     formStatus.textContent = message;
-    formStatus.classList.remove('is-error', 'is-success');
-    formStatus.classList.add(type === 'success' ? 'is-success' : 'is-error');
+    formStatus.classList.add('is-error');
   };
 
   const clearStatus = () => {
     if (!formStatus) return;
     formStatus.textContent = '';
-    formStatus.classList.remove('is-error', 'is-success');
+    formStatus.classList.remove('is-error');
   };
 
   /* ============ 入力時にエラー解除 ============ */
@@ -43,7 +50,7 @@
     if (!input) return;
     input.addEventListener('input', () => {
       clearFieldError(input);
-      clearStatus();
+      if (isConfigured) clearStatus();
     });
   });
 
@@ -55,7 +62,7 @@
 
     if (!name) {
       setFieldError(nameField);
-      showStatus('お名前を入力してください', 'error');
+      showStatus('お名前を入力してください');
       nameField?.focus();
       return null;
     }
@@ -63,14 +70,14 @@
 
     if (!email) {
       setFieldError(emailField);
-      showStatus('メールアドレスを入力してください', 'error');
+      showStatus('メールアドレスを入力してください');
       emailField?.focus();
       return null;
     }
 
-    if (!EMAIL_PATTERN.test(email)) {
+    if (!EMAIL_PATTERN.test(email) || emailField.validity.typeMismatch) {
       setFieldError(emailField);
-      showStatus('メールアドレスの形式が正しくありません', 'error');
+      showStatus('メールアドレスの形式が正しくありません');
       emailField?.focus();
       return null;
     }
@@ -78,7 +85,7 @@
 
     if (!message) {
       setFieldError(messageField);
-      showStatus('お問い合わせ内容を入力してください', 'error');
+      showStatus('お問い合わせ内容を入力してください');
       messageField?.focus();
       return null;
     }
@@ -87,32 +94,29 @@
     return { name, email, message };
   };
 
-  /* ============ mailtoリンク生成 ============ */
-  const buildMailtoLink = ({ name, email, message }) => {
-    const subject = `HPよりお問い合わせ（${name}様）`;
-    const body = [
-      `お名前：${name}`,
-      `メールアドレス：${email}`,
-      '',
-      'お問い合わせ内容：',
-      message,
-    ].join('\n');
-
-    return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
-
   /* ============ 送信処理 ============ */
+  form.noValidate = true;
+  submitButton.disabled = !isConfigured;
+  if (!isConfigured) showStatus(UNAVAILABLE_MESSAGE);
+
   form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    if (!isConfigured) {
+      event.preventDefault();
+      showStatus(UNAVAILABLE_MESSAGE);
+      return;
+    }
 
     const data = validate();
-    if (!data) return;
+    if (!data) {
+      event.preventDefault();
+      return;
+    }
 
-    window.location.href = buildMailtoLink(data);
-
-    showStatus(
-      `メールソフトが起動します。送信できない場合は ${CONTACT_EMAIL} へ直接ご連絡ください。`,
-      'success'
-    );
+    nameField.value = data.name;
+    emailField.value = data.email;
+    messageField.value = data.message;
+    clearStatus();
+    // 通常のPOSTでFormspreeへ送信し、迷惑送信対策と受付完了画面は同サービスで表示。
+    // ここでは送信成功を表示せず、戻った際に再編集できるよう入力内容を保持する。
   });
 })();

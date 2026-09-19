@@ -65,16 +65,27 @@
 
 ---
 
-## 4. 連絡先メールアドレスを変更する
+## 4. お問い合わせフォームを有効にする（Formspree）
 
-メールアドレスは以下の2箇所に記載されています。どちらも同じアドレスに揃えて変更してください。
+受信先メールアドレスは **Formspreeの管理画面だけ** に登録します。
+HTML、JavaScript、構造化データ、READMEには記載しないでください。
 
-1. **`index.html`**
-   - `<a href="mailto:contact@miwako-aoki.com" class="contact-mail">contact@miwako-aoki.com</a>`
-   - `href="mailto:..."` の部分と、表示テキスト部分の両方を新しいアドレスに書き換えます。
+1. [Formspree](https://formspree.io/create)で登録・メール認証を行い、新しいフォームを作ります。
+2. フォームの通知先（Target Email）を設定し、必要な受信先認証を完了します。
+3. Integrationに表示される `https://formspree.io/f/` で始まるフォームURLをコピーします。
+4. `index.html` の `<form id="contactForm" ...>` に、発行されたURLを `action` 属性として追加します。
+   例：`action="https://formspree.io/f/YOUR_FORM_ID"`（`YOUR_FORM_ID`は実際のIDに置き換えます）。
+5. 公開サイトで送信し、日本語の受付完了画面、Formspreeの受信一覧、通知メールの受信を確認します。
 
-2. **`js/form.js`**
-   - お問い合わせフォームの送信先として使われているメールアドレスの記述を、同じ新しいアドレスに書き換えます。
+フォームURLは設定済みです。URLが未設定・不正な場合は送信ボタンが無効になり、Instagramへの案内を表示します。
+メールアプリは使わずFormspreeへPOSTします。必要に応じて迷惑送信対策の確認画面へ進み、受付成功後に完了画面が表示されます。
+入力内容は送信前に消去しません。エラー時はブラウザで戻って内容を確認してください。
+
+受信先の変更はFormspree側で行います。フォームIDを変更したときだけ、サイトの `action` を更新します。
+JavaScriptが無効な場合は送信できず、Instagramへの案内を表示します。
+過去に公開したメールアドレスはGit履歴や検索キャッシュに残る可能性があります。本変更では履歴を書き換えません。
+
+仕様：[HTMLフォーム](https://help.formspree.io/articles/building-your-form/building-an-html-form)、[日本語表示](https://help.formspree.io/articles/building-your-form/localization-and-translation)。
 
 ---
 
