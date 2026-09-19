@@ -61,8 +61,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/style.css">
     <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -160,15 +161,14 @@
         <!-- ============ Voice Samples ============ -->
         <section id="voice" class="section section--voice">
             <div class="container">
-                <header class="section-head reveal">
-                    <p class="section-label">Voice Samples</p>
+                <header class="section-head">
                     <h2 class="section-title">声を、聴いてみてください</h2>
                     <p class="section-lead">番組・CM・企業VPなど、様々なスタイルのナレーションをお聴きいただけます。</p>
                 </header>
 
                 <div class="samples" id="sampleList">
                     <!-- サンプル編集: data-src=音声ファイル / sample-title=タイトル / sample-meta=説明 -->
-                    <article class="sample-card reveal" data-src="assets/audio/sample1.mp3" data-title="番組ナレーション">
+                    <article class="sample-card" data-src="assets/audio/sample1.mp3" data-title="番組ナレーション">
                         <button class="sample-play" aria-label="番組ナレーションのサンプルを再生">
                             <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
                             <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
@@ -184,7 +184,7 @@
                         </div>
                     </article>
 
-                    <article class="sample-card reveal" data-src="assets/audio/sample2.mp3" data-title="高校サッカー">
+                    <article class="sample-card" data-src="assets/audio/sample2.mp3" data-title="高校サッカー">
                         <button class="sample-play" aria-label="高校サッカーのサンプルを再生">
                             <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
                             <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
@@ -200,7 +200,7 @@
                         </div>
                     </article>
 
-                    <article class="sample-card reveal" data-src="assets/audio/sample3.mp3" data-title="総合サンプル 2024">
+                    <article class="sample-card" data-src="assets/audio/sample3.mp3" data-title="総合サンプル 2024">
                         <button class="sample-play" aria-label="総合サンプルを再生">
                             <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
                             <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
@@ -222,25 +222,24 @@
         <!-- ============ Profile ============ -->
         <section id="profile" class="section section--profile">
             <div class="container">
-                <header class="section-head reveal">
-                    <p class="section-label">Profile</p>
+                <header class="section-head">
                     <h2 class="section-title">プロフィール</h2>
                 </header>
 
                 <div class="profile-grid">
-                    <figure class="profile-photo reveal">
+                    <figure class="profile-photo">
                         <img src="assets/images/profile.jpg" alt="青木みわこ" loading="lazy">
                     </figure>
 
                     <div class="profile-body">
-                        <h3 class="profile-name reveal">青木みわこ <span class="profile-name-en">MIWAKO AOKI</span></h3>
-                        <p class="profile-bio reveal">
+                        <h3 class="profile-name">青木みわこ <span class="profile-name-en">MIWAKO AOKI</span></h3>
+                        <p class="profile-bio">
                             神戸生まれ、岡山育ち、渋谷区在住。<br>
                             企業の式典、パーティーや披露宴のMCからスタートし、ナレーターへ。<br>
                             フリーランスのナレーターとして、現在は企業VPを中心に、これまで約300の作品に携わらせていただきました。MCは約3000件担当。
                         </p>
 
-                        <div class="stats reveal">
+                        <div class="stats">
                             <div class="stat">
                                 <p class="stat-number"><span data-count="300">0</span><small>+</small></p>
                                 <p class="stat-label">ナレーション作品</p>
@@ -251,7 +250,7 @@
                             </div>
                         </div>
 
-                        <div class="profile-detail reveal">
+                        <div class="profile-detail">
                             <h4 class="profile-detail-title">対応可能なナレーションスタイル</h4>
                             <ul class="tag-list">
                                 <li>明るく元気</li>
@@ -261,7 +260,7 @@
                             </ul>
                         </div>
 
-                        <div class="profile-detail reveal">
+                        <div class="profile-detail">
                             <h4 class="profile-detail-title">宅録環境</h4>
                             <p class="profile-detail-text">
                                 マイク：Shure SM7B ／ オーディオインターフェース：Audient Evo4<br>
@@ -276,29 +275,28 @@
         <!-- ============ Services ============ -->
         <section id="service" class="section section--service">
             <div class="container">
-                <header class="section-head reveal">
-                    <p class="section-label">Service</p>
+                <header class="section-head">
                     <h2 class="section-title">声で、伝わる時間をつくります</h2>
                     <p class="section-lead">媒体や目的に合わせて、声の温度・スピード・表現をご提案します。</p>
                 </header>
 
                 <div class="service-grid">
-                    <article class="service-card reveal">
+                    <article class="service-card">
                         <p class="service-number">01</p>
                         <h3>企業VP・プロモーション</h3>
                         <p>商品・サービスの魅力を、わかりやすく信頼感のある声で届けます。</p>
                     </article>
-                    <article class="service-card reveal">
+                    <article class="service-card">
                         <p class="service-number">02</p>
                         <h3>CM・番組ナレーション</h3>
                         <p>短い言葉にも印象を残す表現から、長尺のストーリーまで対応します。</p>
                     </article>
-                    <article class="service-card reveal">
+                    <article class="service-card">
                         <p class="service-number">03</p>
                         <h3>イベントMC・司会</h3>
                         <p>式典・パーティー・披露宴など、会場の空気に寄り添って進行します。</p>
                     </article>
-                    <article class="service-card reveal">
+                    <article class="service-card">
                         <p class="service-number">04</p>
                         <h3>宅録・リモート収録</h3>
                         <p>ご希望の収録方法に合わせ、全国からのご依頼にも柔軟に対応します。</p>
@@ -310,12 +308,11 @@
         <!-- ============ Works ============ -->
         <section id="works" class="section section--works">
             <div class="container">
-                <header class="section-head reveal">
-                    <p class="section-label">Works</p>
+                <header class="section-head">
                     <h2 class="section-title">これまでの主な実績</h2>
                 </header>
 
-                <div class="works-filter reveal" role="group" aria-label="実績の絞り込み">
+                <div class="works-filter" role="group" aria-label="実績の絞り込み">
                     <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">すべて</button>
                     <button type="button" class="filter-btn" data-filter="cm" aria-pressed="false">CM</button>
                     <button type="button" class="filter-btn" data-filter="vp" aria-pressed="false">企業VP</button>
@@ -325,89 +322,89 @@
 
                 <div class="works-grid" id="worksGrid">
                     <!-- 実績編集: data-category / work-tag / work-title / work-client -->
-                    <article class="work-card reveal" data-category="cm">
+                    <article class="work-card" data-category="cm">
                         <span class="work-tag">TVCM</span>
                         <h3 class="work-title">おしゃれイズム×資生堂</h3>
                         <p class="work-client">資生堂</p>
                     </article>
-                    <article class="work-card reveal" data-category="tv">
+                    <article class="work-card" data-category="tv">
                         <span class="work-tag">TV番組</span>
                         <h3 class="work-title">ヨーロッパスペシャル紀行 PR</h3>
                         <p class="work-client">NHK BSP・4K『上野樹里と行く！スペイン・バレンシア』</p>
                     </article>
-                    <article class="work-card reveal" data-category="tv">
+                    <article class="work-card" data-category="tv">
                         <span class="work-tag">TV番組</span>
                         <h3 class="work-title">遥かなるアジアンハイウェイ</h3>
                         <p class="work-client">BS-TBS</p>
                     </article>
-                    <article class="work-card reveal" data-category="vp">
+                    <article class="work-card" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">富士フイルム アスタリフト</h3>
                         <p class="work-client">富士フイルム</p>
                     </article>
-                    <article class="work-card reveal" data-category="other">
+                    <article class="work-card" data-category="other">
                         <span class="work-tag">特別展</span>
                         <h3 class="work-title">国宝 聖林寺十一面観音</h3>
                         <p class="work-client">東京国立博物館・奈良国立博物館（映像展示ナレーション・TVCM）</p>
                     </article>
-                    <article class="work-card reveal" data-category="vp">
+                    <article class="work-card" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">リクルート スタディサプリ</h3>
                         <p class="work-client">リクルート</p>
                     </article>
-                    <article class="work-card reveal" data-category="vp">
+                    <article class="work-card" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">Panasonic 企業VP</h3>
                         <p class="work-client">Panasonic</p>
                     </article>
-                    <article class="work-card reveal" data-category="vp">
+                    <article class="work-card" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">PlayStation プロモーション</h3>
                         <p class="work-client">Sony Interactive Entertainment</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="vp">
+                    <article class="work-card is-extra" data-category="vp">
                         <span class="work-tag">医薬品VP</span>
                         <h3 class="work-title">イーライリリー 医薬品紹介</h3>
                         <p class="work-client">イーライリリー</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="vp">
+                    <article class="work-card is-extra" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">ロクシタン 商品紹介</h3>
                         <p class="work-client">ロクシタン</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="other">
+                    <article class="work-card is-extra" data-category="other">
                         <span class="work-tag">官公庁</span>
                         <h3 class="work-title">総務省 広報映像</h3>
                         <p class="work-client">総務省</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="other">
+                    <article class="work-card is-extra" data-category="other">
                         <span class="work-tag">スポーツ</span>
                         <h3 class="work-title">日本バスケットボール協会</h3>
                         <p class="work-client">JBA</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="cm">
+                    <article class="work-card is-extra" data-category="cm">
                         <span class="work-tag">TVCM</span>
                         <h3 class="work-title">おしゃれクリップ×資生堂</h3>
                         <p class="work-client">資生堂</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="vp">
+                    <article class="work-card is-extra" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">ユースキン 商品紹介</h3>
                         <p class="work-client">ユースキン</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="vp">
+                    <article class="work-card is-extra" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">アイフルホーム 企業紹介</h3>
                         <p class="work-client">アイフルホーム</p>
                     </article>
-                    <article class="work-card reveal is-extra" data-category="vp">
+                    <article class="work-card is-extra" data-category="vp">
                         <span class="work-tag">企業VP</span>
                         <h3 class="work-title">FASTGYM24 プロモーション</h3>
                         <p class="work-client">FASTGYM24</p>
                     </article>
                 </div>
 
-                <div class="works-more reveal">
+                <div class="works-more">
                     <button id="showMore" class="btn btn--ghost">もっと見る</button>
                     <p class="works-note">他にも多数の企業様の作品に携わらせていただいております。</p>
                 </div>
@@ -417,8 +414,7 @@
         <!-- ============ Contact ============ -->
         <section id="contact" class="section section--contact">
             <div class="container">
-                <header class="section-head reveal">
-                    <p class="section-label">Contact</p>
+                <header class="section-head">
                     <h2 class="section-title">お仕事のご依頼・お問い合わせ</h2>
                     <p class="section-lead">
                         ナレーションのご依頼、お見積もり、その他ご質問など、<br class="pc-only">
@@ -427,7 +423,7 @@
                 </header>
 
                 <div class="contact-grid">
-                    <div class="contact-info reveal">
+                    <div class="contact-info">
                         <p class="contact-info-lead">メールでのご連絡はこちらへ</p>
                         <a href="mailto:contact@miwako-aoki.com" class="contact-mail">contact@miwako-aoki.com</a>
                         <div class="contact-guide">
@@ -444,7 +440,7 @@
                         </a>
                     </div>
 
-                    <form id="contactForm" class="contact-form reveal" novalidate>
+                    <form id="contactForm" class="contact-form" novalidate>
                         <div class="form-field">
                             <label for="name">お名前（会社名）<span class="required">必須</span></label>
                             <input type="text" id="name" name="name" autocomplete="name" required>

@@ -1,0 +1,54 @@
+/* Hallmark · tokens — 青木みわこ Narrator Portfolio
+   Warm coral × mincho editorial system.
+   色はすべて OKLCH。ページ CSS は必ずここで定義した名前を参照する。 */
+
+:root {
+    /* Paper（紙面）*/
+    --bg:      oklch(97.8% 0.006 60);
+    --bg-alt:  oklch(95.1% 0.013 56);
+    --surface: oklch(99.2% 0.004 70); /* 純白は使わない: アンカー色へ寄せた温白 */
+
+    /* Ink（文字）*/
+    --ink:       oklch(34.2% 0.011 56);
+    --ink-soft:  oklch(55.0% 0.017 55);
+    --ink-faint: oklch(70.1% 0.020 57);
+
+    /* Accent — コーラル。1ビューポートあたり少量に留める */
+    --coral:        oklch(75.0% 0.105 37);
+    --coral-strong: oklch(68.4% 0.121 37);
+    --coral-deep:   oklch(61.2% 0.124 36);
+    --coral-ink:    oklch(54.0% 0.115 36); /* 白文字を載せる塗り・小さめ文字用（4.5:1 以上を確保） */
+    --coral-soft:   oklch(82.2% 0.081 37);
+    --coral-tint:   oklch(94.8% 0.021 49);
+    --line:         oklch(90.5% 0.020 60);
+
+    /* Studio（ダークセクション・フッター用）*/
+    --studio:      oklch(31.8% 0.012 62);
+    --cream:       oklch(95.6% 0.011 63);
+    --cream-soft:  oklch(94.9% 0.010 68);
+    --cream-muted: oklch(82.5% 0.018 56);
+    --cream-faint: oklch(75.2% 0.019 59);
+
+    /* Feedback */
+    --error:   oklch(58.9% 0.156 23);
+    --success: oklch(57.9% 0.097 149);
+
+    /* Typography */
+    --font-serif: 'Shippori Mincho', 'Hiragino Mincho ProN', serif;
+    --font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    --font-latin: 'Cormorant Garamond', 'Shippori Mincho', serif;
+
+    /* Rhythm */
+    --header-h: 76px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-xs: 0 1px 4px oklch(34.2% 0.011 56 / 0.05);
+    --shadow-sm: 0 2px 10px oklch(34.2% 0.011 56 / 0.06);
+    --shadow-md: 0 10px 30px oklch(34.2% 0.011 56 / 0.10);
+    --shadow-lg: 0 24px 60px oklch(34.2% 0.011 56 / 0.14);
+    --shadow-xl: 0 36px 90px oklch(34.2% 0.011 56 / 0.18);
+    --ring-coral: 0 0 0 4px oklch(68.4% 0.121 37 / 0.18);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-short: 0.25s;
+    --dur-mid: 0.4s;
+}

@@ -48,7 +48,7 @@
 
   /* ============ スクロールスパイ ============ */
   /* 'home' を含めることで、ヒーローまで戻ったときにハイライトを解除する */
-  const spySectionIds = ['home', 'voice', 'profile', 'works', 'contact'];
+  const spySectionIds = ['home', 'voice', 'service', 'profile', 'works', 'contact'];
   const spySections = spySectionIds
     .map((id) => document.getElementById(id))
     .filter(Boolean);
